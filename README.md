@@ -5,6 +5,6 @@ Now it can
 - Click each book, will show a detail page with some descriptions
 - It has SwiftData as offline storage
 
-Some experimental feature:
+Some experimental feature in future:
 - Add a rotating cards on the empty starting screen with some famous quote
 
