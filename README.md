@@ -9,8 +9,8 @@ Tech stack:
 
 * Data source should be OpenLibrary API (https://openlibrary.org/developers/api)
 * There are a lot of api from this site, for the feature described in the requirement, I only use these two end points:
-    ** Subject API: Fetch books by subject name
-    ** Book API: Retrieve a specific work or edition by identifier
+    - [Subject API](https://openlibrary.org/dev/docs/api/subjects): Fetch books by subject name
+    - [Book API](https://openlibrary.org/dev/docs/api/books): Retrieve a specific work or edition by identifier
 
 ## List View - the landing screen when you open the app. This screen should display the following
 
