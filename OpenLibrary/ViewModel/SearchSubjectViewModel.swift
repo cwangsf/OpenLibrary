@@ -57,8 +57,9 @@ class SearchSubjectViewModel: ObservableObject {
                 self.bookItems.append(contentsOf: response.books)
                 
                 if let modelContext = modelContext {
+                    let currentSearchText = searchText
                     let fetchDescriptor = FetchDescriptor<OfflineSubjectMap>(
-                        predicate: #Predicate { $0.subject == searchText }
+                        predicate: #Predicate { $0.subject == currentSearchText }
                     )
                     if let existingMap = try? modelContext.fetch(fetchDescriptor).first {
                         let existingKeys = Set(existingMap.bookItemList.map { $0.key })

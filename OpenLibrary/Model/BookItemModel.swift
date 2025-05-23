@@ -7,11 +7,11 @@
 import SwiftData
 import Foundation
 
-struct AuthorElement: Codable {
+struct AuthorElement: Codable, Sendable {
     let author: AuthorInfo
 }
 
-struct AuthorInfo: Codable {
+struct AuthorInfo: Codable, Sendable {
     let name: String?
     let key: String // Sample: https://openlibrary.org/authors/OL23919A.json
     

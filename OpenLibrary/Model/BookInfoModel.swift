@@ -8,7 +8,7 @@ import SwiftData
 import Foundation
 
 @Model
-class BookInfo: Codable {
+class BookInfo: Codable, @unchecked Sendable {
     @Attribute(.unique) var key: String // Assume key is unique for every book
     var title: String
     var bookDescription: String
