@@ -37,28 +37,42 @@ struct WelcomeView: View {
 
 struct HomeImageView: View {
     let homeImages: [HomeImageModel]
+    @State private var currentPage = 0
+    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        
-        List {
-            ForEach(homeImages) { homeImage in
+        TabView(selection: $currentPage) {
+            ForEach(Array(homeImages.enumerated()), id: \.element.id) { index, homeImage in
                 ZStack {
                     Image(homeImage.image)
                         .resizable()
                         .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipped()
                     VStack {
                         Spacer()
                         Text(homeImage.quote.quoteText)
+                            .italic()
                             .multilineTextAlignment(.leading)
-                            .padding(.vertical)
+                            .font(.largeTitle)
+                            .padding()
                         HStack {
                             Spacer()
                             Text("- " + homeImage.quote.author)
                         }
+                        .padding()
                     }
                     .padding()
                     .foregroundStyle(.white)
                 }
+                .tag(index)
+            }
+        }
+        .tabViewStyle(.page)
+        .indexViewStyle(.page(backgroundDisplayMode: .never))
+        .onReceive(timer) { _ in
+            withAnimation {
+                currentPage = (currentPage + 1) % homeImages.count
             }
         }
     }
